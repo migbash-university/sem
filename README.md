@@ -1,4 +1,4 @@
-### This is the first Lab Session on Software Engineering Methods
+### Lab Session on Software Engineering Methods
 
 ---
 
