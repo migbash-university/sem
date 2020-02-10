@@ -2,6 +2,11 @@ package com.napier.sem;
 
 import java.sql.*;
 
+/**
+ * This is the App for connecting to the docker-container,
+ * which is running the MySQL Database
+ */
+
 public class App
 {
     public static void main(String[] args)
