@@ -19,7 +19,7 @@ public class App
         a.connect();
 
         // Extract employee salary information
-        ArrayList<Employee> employees = a.getAllSalaries();
+        ArrayList<Employee> employees = a.getAllSalariesByRole("Engineer");
 
         // Test the size of the returned data - should be 240124
         System.out.println(employees.size());
@@ -100,7 +100,7 @@ public class App
      * Gets all the current employees and salaries.
      * @return A list of all employees and salaries, or null if there is an error.
      */
-    public ArrayList<Employee> getAllSalaries()
+    public ArrayList<Employee> getAllSalariesByRole(String role)
     {
         try
         {
@@ -109,9 +109,15 @@ public class App
             // Create string for SQL statement
             String strSelect =
                     "SELECT employees.emp_no, employees.first_name, employees.last_name, salaries.salary "
-                            + "FROM employees, salaries "
-                            + "WHERE employees.emp_no = salaries.emp_no AND salaries.to_date = '9999-01-01' "
-                            + "ORDER BY employees.emp_no ASC";
+                    + "FROM employees, salaries, titles "
+                    + "WHERE employees.emp_no = salaries.emp_no "
+                    + "AND employees.emp_no = titles.emp_no "
+                    + "AND salaries.to_date = '9999-01-01' "
+                    + "AND salaries.to_date = '9999-01-01' "
+                    + "AND titles.to_date = '9999-01-01' "
+                    + "AND titles.title = " + "\""+role+"\"" +
+                            " ORDER BY employees.emp_no ASC ";
+
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract employee information

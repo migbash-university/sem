@@ -1,0 +1,101 @@
+
+@startuml
+
+'Global Variables:
+rectangle Database
+actor HR as "HR Advisor"
+
+
+'Use case [#1]
+
+rectangle "HR System" {
+    usecase UC1 as "Report on the salary of all employees"
+
+    usecase UCc as "Print salary report"
+
+    HR --> UC1 : Use Case 1
+    UC1 ..> UCc : inlcude
+    UC1 --> Database
+}
+
+'Use case [#2]
+
+rectangle "HR System" {
+    usecase UC2 as "Produce department salary report"
+
+    usecase UCc as "Print salary report"
+
+    HR --> UC2 : Use Case 2
+    UC2 ..> UCc : inlcude
+    UC2 --> Database
+}
+
+'_____________
+
+'Use case [#3]
+
+rectangle "HR System" {
+    usecase UC3 as "Produce HR Dept. salary report"
+
+    usecase UCc as "Print salary report"
+
+    HR --> UC3 : Use Case 3
+    UC3 ..> UCc : inlcude
+    UC3 --> Database
+}
+
+'_____________
+
+'Use case [#4]
+
+rectangle "HR System" {
+    usecase UC4 as "Get salaries
+    by role"
+
+    usecase UCa as "Print salaries"
+
+    HR --> UC4 : Use Case 4
+    UC4 ..> UCa : include
+    UC4 --> Database
+}
+
+'Use case [#5]
+
+rectangle "HR System" {
+    usecase UC5 as "Add a new employee's details"
+
+    HR --> UC5 : Use Case 5
+    UC5 --> Database
+}
+
+'Use case [#6]
+
+rectangle "HR System" {
+    usecase UC6 as "View employee's details"
+
+    usecase UCb as "Print salaries"
+
+    HR --> UC6 : Use Case 6
+    UC6 ..> UCb : include
+    UC6 - Database
+}
+
+'Use case [#7]
+
+rectangle "HR System" {
+    usecase UC7 as "Update an employee's details"
+
+    HR --> UC7 : Use Case 7
+    UC7 --> Database
+}
+
+'Use case [#8]
+
+rectangle "HR System" {
+    usecase UC8 as "Delete an employee's details"
+
+    HR --> UC8 : Use Case 8
+    UC8 --> Database
+}
+
+@enduml
