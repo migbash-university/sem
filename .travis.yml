@@ -1,14 +1,53 @@
-# superuser
-sudo: required
-
 language: java
 
 # _________
-# services we wish to use on our system:
+# tells Travis we do not need sudo (super-user) access in this script.
+# This will speed-up our builds.
+sudo: false
+
+# _________
+# tells Travis to set a local hostname.
+# We use db. This allows us to connect to our database container using the name db.
+# We could have just used localhost but this is closer to
+# reality which is the point of integration testing.
+addons:
+  hosts:
+    - db
+
+# _________
+# tells Travis which services we want.
+# We add docker to ensure it is installed.
 services:
   - docker
 
 # _________
-# after the project has been successfully built.
-after_success:
-  - docker-compose up --abort-on-container-exit
+# provides an installation script.
+# This is run before any job.
+# Our install script will build the database container,
+# start it the necessary parameters, and do an install build via Maven.
+# The mvn install syntax used is the same called normally by Travis.
+install:
+  - docker build -t database db/.
+  - docker run --rm -d -e MYSQL_ROOT_PASSWORD=example -p 33060:3306 database
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+# __________
+# is a script that is run before any script part of a job.
+before_script:
+  - mvn clean
+
+# __________
+# This allows us to define build stages under a include item.
+jobs:
+  include:
+    - stage: unit tests
+      install: skip
+      jdk: oraclejdk11
+      script: mvn test -Dtest=com.napier.sem.AppTest
+    - stage: integration tests
+      jdk: oraclejdk11
+      script: echo "Integration Tests"
+    - stage: deploy
+      install: skip
+      jdk: oraclejdk11
+      script: echo "Deploy"
