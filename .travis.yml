@@ -15,7 +15,7 @@ addons:
     - db
 
 # _________
-# tells Travis which services we want.
+# Tells Travis which services we want.
 # We add docker to ensure it is installed.
 services:
   - docker
