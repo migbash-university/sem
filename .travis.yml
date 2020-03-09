@@ -65,3 +65,9 @@ stages:
   - integration tests
   - name: deploy
     if: branch = master
+
+# ____________
+# We will use the after_success step to upload the reports to Codecov.
+# This step takes place after the successful completion of a build stage.
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

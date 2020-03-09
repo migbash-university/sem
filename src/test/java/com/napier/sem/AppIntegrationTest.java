@@ -13,15 +13,13 @@ public class AppIntegrationTest
     static App app;
 
     @BeforeAll
-    static void init()
-    {
+    static void init() {
         app = new App();
         app.connect("localhost:33060");
     }
 
     @Test
-    void testGetEmployee()
-    {
+    void testGetEmployee() {
         Employee emp = app.getEmployee(255530);
         assertEquals(emp.emp_no, 255530);
         assertEquals(emp.first_name, "Ronghao");
