@@ -4,5 +4,7 @@
 
 - Master Build Status [![Build Status](https://travis-ci.org/migbash/sem.svg?branch=master)](https://travis-ci.org/migbash/sem)
 - Develop Build Status [![Build Status](https://travis-ci.org/migbash/sem.svg?branch=develop)](https://travis-ci.org/migbash/sem)
+- Master CodeCov [![codecov](https://codecov.io/gh/migbash/sem/branch/master/graph/badge.svg)](https://codecov.io/gh/migbash/sem)
+- Develop CodeCov [![codecov](https://codecov.io/gh/migbash/sem/branch/develop/graph/badge.svg)](https://codecov.io/gh/migbash/sem)
 - License [![LICENSE](https://img.shields.io/github/license/migbash/sem.svg?style=flat-square)](https://github.com/migbash/sem/blob/master/LICENSE)
 - Release [![Releases](https://img.shields.io/github/release/migbash/sem/all.svg?style=flat-square)](https://github.com/migbash/sem/releases)
